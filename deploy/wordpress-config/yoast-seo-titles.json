@@ -1,0 +1,62 @@
+{
+  "_instructions": "Set these in Yoast SEO panel at the bottom of each page editor, or via Yoast → Search Appearance for defaults",
+
+  "pages": {
+    "/": {
+      "seo_title": "Jing Chen, Realtor — Silicon Valley Real Estate Expert",
+      "meta_description": "Data-driven Silicon Valley realtor helping families buy and sell homes in Sunnyvale, Cupertino, Palo Alto, Mountain View, and Santa Clara. Schedule a free consultation."
+    },
+    "/about/": {
+      "seo_title": "About Jing Chen — Your Trusted Silicon Valley Real Estate Partner",
+      "meta_description": "Meet Jing Chen: 10+ years of Silicon Valley real estate expertise, 150+ families served, bilingual in English and Mandarin. A strategic partner, not just an agent."
+    },
+    "/buy/": {
+      "seo_title": "Buy a Home in Silicon Valley — Jing Chen, Realtor",
+      "meta_description": "Expert buyer representation in Silicon Valley. Data-driven home search, competitive offer strategy, and personal guidance from consultation to closing."
+    },
+    "/sell/": {
+      "seo_title": "Sell Your Silicon Valley Home for Maximum Value — Jing Chen",
+      "meta_description": "Strategic pricing, professional staging and marketing, expert negotiation. Sell your Silicon Valley home with confidence. Get a free home valuation today."
+    },
+    "/sell/home-valuation/": {
+      "seo_title": "Free Home Valuation — What's Your Silicon Valley Home Worth?",
+      "meta_description": "Get a complimentary, expert-prepared home valuation for your Silicon Valley property. Not an algorithm — a real analysis from a local market expert."
+    },
+    "/communities/sunnyvale/": {
+      "seo_title": "Sunnyvale Homes for Sale — Sunnyvale Real Estate Agent | Jing Chen",
+      "meta_description": "Explore Sunnyvale homes for sale with Jing Chen. Top schools, tech hub proximity, family-friendly neighborhoods. Start your Sunnyvale home search today."
+    },
+    "/communities/cupertino/": {
+      "seo_title": "Cupertino Homes for Sale — Cupertino Real Estate Agent | Jing Chen",
+      "meta_description": "Find Cupertino homes for sale with Jing Chen. Top-rated schools, Apple headquarters, family-friendly living. Start your Cupertino home search today."
+    },
+    "/communities/palo-alto/": {
+      "seo_title": "Palo Alto Homes for Sale — Palo Alto Real Estate Agent | Jing Chen",
+      "meta_description": "Explore Palo Alto homes for sale with Jing Chen. Stanford University, top schools, premier Silicon Valley living. Find your Palo Alto home today."
+    },
+    "/communities/mountain-view/": {
+      "seo_title": "Mountain View Homes for Sale — Mountain View Real Estate Agent | Jing Chen",
+      "meta_description": "Find Mountain View homes for sale with Jing Chen. Home to Google, vibrant downtown, excellent Silicon Valley living. Start your search today."
+    },
+    "/communities/santa-clara/": {
+      "seo_title": "Santa Clara Homes for Sale — Santa Clara Real Estate Agent | Jing Chen",
+      "meta_description": "Explore Santa Clara homes for sale with Jing Chen. Affordable Silicon Valley entry point, great schools, tech employers, family-friendly neighborhoods."
+    },
+    "/listings/": {
+      "seo_title": "Featured Silicon Valley Listings — Jing Chen, Realtor",
+      "meta_description": "Browse featured homes for sale in Silicon Valley. Handpicked listings in Sunnyvale, Cupertino, Palo Alto, Mountain View, and Santa Clara."
+    },
+    "/success-stories/": {
+      "seo_title": "Client Success Stories & Reviews — Jing Chen, Realtor",
+      "meta_description": "Read what Silicon Valley families say about working with Jing Chen. 5.0-star Google rating. Real stories from real buyers and sellers."
+    },
+    "/contact/": {
+      "seo_title": "Contact Jing Chen — Silicon Valley Real Estate Consultation",
+      "meta_description": "Schedule a free consultation with Jing Chen, Silicon Valley realtor. Bilingual service in English and Mandarin. Call, email, or book online."
+    },
+    "/resources/": {
+      "seo_title": "Silicon Valley Real Estate Resources & Market Insights — Jing Chen",
+      "meta_description": "Market reports, buyer and seller guides, mortgage calculators, and neighborhood insights for Silicon Valley real estate."
+    }
+  }
+}

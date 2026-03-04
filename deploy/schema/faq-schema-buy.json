@@ -1,0 +1,46 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I buy a home in Silicon Valley?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start by getting pre-approved for a mortgage, then work with a local real estate agent who understands Silicon Valley's competitive market. A good agent will help you with targeted home searches, offer strategy, and negotiation. Contact Jing Chen for a free buyer consultation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How competitive is the Silicon Valley housing market?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Silicon Valley is one of the most competitive real estate markets in the US. Homes in cities like Cupertino, Palo Alto, and Sunnyvale often receive multiple offers within days of listing. Working with an experienced local agent who can craft winning offer strategies is essential."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the average home price in Silicon Valley?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Home prices vary by city: Sunnyvale averages around $1.9M, Cupertino around $2.8M, Palo Alto around $3.5M, Mountain View around $2.1M, and Santa Clara around $1.7M. Contact Jing Chen for current market data specific to your target neighborhood."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the best school districts in Silicon Valley?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Top-rated school districts include Cupertino Union School District (feeding into Monta Vista and Lynbrook High Schools), Palo Alto Unified, and Fremont Union High School District. School assignments depend on exact address — a knowledgeable realtor can verify which schools your target home feeds into."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Jing Chen speak Mandarin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, Jing Chen is fluent in both English and Mandarin (中文), providing bilingual real estate services for families throughout Silicon Valley."
+      }
+    }
+  ]
+}

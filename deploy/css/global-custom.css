@@ -1,0 +1,363 @@
+/*
+ * HomeByJingChen — Global Custom CSS
+ * Paste into: Appearance → Customize → Additional CSS
+ * OR Elementor → Site Settings → Custom CSS (Pro)
+ */
+
+/* ============================================
+   1. CSS CUSTOM PROPERTIES (Design Tokens)
+   ============================================ */
+:root {
+  /* Colors */
+  --jc-navy: #1B2A4A;
+  --jc-navy-light: #2D4066;
+  --jc-gold: #C9A84C;
+  --jc-gold-dark: #B8973E;
+  --jc-white: #FFFFFF;
+  --jc-cream: #FDF8F0;
+  --jc-gray-light: #F5F5F5;
+  --jc-gray-medium: #888888;
+  --jc-text-dark: #333333;
+  --jc-success: #2D8B4E;
+  --jc-error: #D44638;
+
+  /* Typography */
+  --jc-font-heading: 'Playfair Display', Georgia, serif;
+  --jc-font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Spacing */
+  --jc-section-padding: 80px;
+  --jc-content-max-width: 1200px;
+  --jc-text-max-width: 720px;
+
+  /* Shadows */
+  --jc-shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --jc-shadow-default: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --jc-shadow-elevated: 0 8px 30px rgba(0, 0, 0, 0.12);
+
+  /* Borders */
+  --jc-radius-sm: 4px;
+  --jc-radius-md: 6px;
+  --jc-radius-lg: 12px;
+}
+
+/* ============================================
+   2. OVERRIDE ASTRA DEFAULTS
+   ============================================ */
+
+/* Remove Astra purple, apply navy/gold */
+:root {
+  --ast-global-color-0: #1B2A4A;  /* Primary */
+  --ast-global-color-1: #C9A84C;  /* Accent */
+  --ast-global-color-2: #333333;  /* Text */
+  --ast-global-color-3: #888888;  /* Secondary text */
+  --ast-global-color-4: #F5F5F5;  /* Light bg */
+  --ast-global-color-5: #FFFFFF;  /* White bg */
+}
+
+body {
+  font-family: var(--jc-font-body);
+  color: var(--jc-text-dark);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+h1, h2 {
+  font-family: var(--jc-font-heading);
+  color: var(--jc-navy);
+  font-weight: 700;
+}
+
+h3, h4, h5, h6 {
+  font-family: var(--jc-font-body);
+  color: var(--jc-navy);
+  font-weight: 600;
+}
+
+h1 { font-size: 48px; line-height: 1.2; letter-spacing: -0.02em; }
+h2 { font-size: 36px; line-height: 1.3; letter-spacing: -0.01em; }
+h3 { font-size: 28px; line-height: 1.4; }
+h4 { font-size: 22px; line-height: 1.4; }
+
+a {
+  color: var(--jc-navy);
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: var(--jc-gold);
+}
+
+/* ============================================
+   3. BUTTON STYLES
+   ============================================ */
+.jc-btn-primary,
+.elementor-button.jc-btn-primary {
+  background-color: var(--jc-gold) !important;
+  color: var(--jc-white) !important;
+  font-family: var(--jc-font-body);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 16px 32px;
+  border: none;
+  border-radius: var(--jc-radius-md);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-transform: none;
+}
+.jc-btn-primary:hover,
+.elementor-button.jc-btn-primary:hover {
+  background-color: var(--jc-gold-dark) !important;
+  transform: translateY(-1px);
+}
+
+.jc-btn-secondary,
+.elementor-button.jc-btn-secondary {
+  background-color: transparent !important;
+  color: var(--jc-white) !important;
+  font-family: var(--jc-font-body);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 14px 30px;
+  border: 2px solid var(--jc-white) !important;
+  border-radius: var(--jc-radius-md);
+  transition: all 0.3s ease;
+  text-transform: none;
+}
+.jc-btn-secondary:hover,
+.elementor-button.jc-btn-secondary:hover {
+  background-color: var(--jc-white) !important;
+  color: var(--jc-navy) !important;
+}
+
+/* Elementor default button override */
+.elementor-button {
+  font-family: var(--jc-font-body) !important;
+  font-weight: 700 !important;
+  border-radius: var(--jc-radius-md) !important;
+  letter-spacing: 0.03em !important;
+  text-transform: none !important;
+}
+
+/* ============================================
+   4. SECTION BACKGROUNDS
+   ============================================ */
+.jc-bg-navy {
+  background-color: var(--jc-navy);
+  color: var(--jc-white);
+}
+.jc-bg-navy h1, .jc-bg-navy h2, .jc-bg-navy h3,
+.jc-bg-navy h4, .jc-bg-navy p {
+  color: var(--jc-white);
+}
+
+.jc-bg-cream {
+  background-color: var(--jc-cream);
+}
+
+.jc-bg-gray {
+  background-color: var(--jc-gray-light);
+}
+
+/* ============================================
+   5. CARD STYLES
+   ============================================ */
+.jc-card {
+  background: var(--jc-white);
+  border-radius: var(--jc-radius-lg);
+  box-shadow: var(--jc-shadow-default);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.jc-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--jc-shadow-elevated);
+}
+
+/* Listing card */
+.jc-listing-card .jc-listing-card__image {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+.jc-listing-card .jc-listing-card__content {
+  padding: 24px;
+}
+.jc-listing-card .jc-listing-card__price {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--jc-navy);
+}
+.jc-listing-card .jc-listing-card__details {
+  font-size: 14px;
+  color: var(--jc-gray-medium);
+  margin-top: 8px;
+}
+
+/* Community card with hover zoom */
+.jc-community-card {
+  position: relative;
+  border-radius: var(--jc-radius-lg);
+  overflow: hidden;
+  height: 300px;
+  display: block;
+}
+.jc-community-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.jc-community-card:hover img {
+  transform: scale(1.05);
+}
+.jc-community-card__overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 24px;
+  background: linear-gradient(transparent, rgba(27, 42, 74, 0.85));
+  color: var(--jc-white);
+}
+.jc-community-card__name {
+  font-family: var(--jc-font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--jc-white);
+}
+
+/* ============================================
+   6. FORM STYLES
+   ============================================ */
+.wpforms-container .wpforms-field input,
+.wpforms-container .wpforms-field textarea,
+.wpforms-container .wpforms-field select {
+  border: 1.5px solid #DDD !important;
+  border-radius: var(--jc-radius-md) !important;
+  padding: 14px 16px !important;
+  font-family: var(--jc-font-body) !important;
+  font-size: 16px !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+.wpforms-container .wpforms-field input:focus,
+.wpforms-container .wpforms-field textarea:focus,
+.wpforms-container .wpforms-field select:focus {
+  border-color: var(--jc-gold) !important;
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15) !important;
+  outline: none !important;
+}
+.wpforms-container .wpforms-field-label {
+  font-family: var(--jc-font-body) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: var(--jc-navy) !important;
+}
+.wpforms-container button[type="submit"],
+.wpforms-container .wpforms-submit {
+  background-color: var(--jc-gold) !important;
+  color: var(--jc-white) !important;
+  font-family: var(--jc-font-body) !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  padding: 16px 32px !important;
+  border-radius: var(--jc-radius-md) !important;
+  border: none !important;
+  transition: background-color 0.3s ease !important;
+}
+.wpforms-container button[type="submit"]:hover,
+.wpforms-container .wpforms-submit:hover {
+  background-color: var(--jc-gold-dark) !important;
+}
+
+/* Multi-step form progress bar */
+.wpforms-page-indicator-steps .wpforms-page-indicator-page.active {
+  background-color: var(--jc-gold) !important;
+  color: var(--jc-white) !important;
+}
+
+/* ============================================
+   7. STATS COUNTER SECTION
+   ============================================ */
+.jc-stats-bar {
+  background-color: var(--jc-navy);
+  padding: 48px 0;
+}
+.jc-stats-bar .jc-stat-number {
+  font-family: var(--jc-font-body);
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--jc-gold);
+  display: block;
+}
+.jc-stats-bar .jc-stat-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--jc-white);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 8px;
+}
+
+/* ============================================
+   8. HEADER OVERRIDES
+   ============================================ */
+
+/* Schedule a Call button in header */
+.ast-custom-button a,
+.ast-header-button-1 .ast-custom-button-link {
+  background-color: var(--jc-gold) !important;
+  color: var(--jc-white) !important;
+  font-weight: 700 !important;
+  border-radius: var(--jc-radius-md) !important;
+  padding: 10px 20px !important;
+  font-size: 14px !important;
+}
+.ast-custom-button a:hover,
+.ast-header-button-1 .ast-custom-button-link:hover {
+  background-color: var(--jc-gold-dark) !important;
+}
+
+/* Navigation links */
+.main-header-menu .menu-link {
+  font-family: var(--jc-font-body) !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  color: var(--jc-navy) !important;
+}
+.main-header-menu .menu-link:hover {
+  color: var(--jc-gold) !important;
+}
+
+/* ============================================
+   9. FOOTER OVERRIDES
+   ============================================ */
+.site-footer {
+  background-color: var(--jc-navy) !important;
+  color: var(--jc-white) !important;
+}
+.site-footer a {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+.site-footer a:hover {
+  color: var(--jc-gold) !important;
+}
+.site-footer h4,
+.site-footer .widget-title {
+  color: var(--jc-white) !important;
+  font-family: var(--jc-font-body) !important;
+}
+
+/* ============================================
+   10. RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  h1 { font-size: 32px; }
+  h2 { font-size: 28px; }
+  h3 { font-size: 22px; }
+  h4 { font-size: 18px; }
+
+  .jc-community-card { height: 200px; }
+
+  :root {
+    --jc-section-padding: 48px;
+  }
+}

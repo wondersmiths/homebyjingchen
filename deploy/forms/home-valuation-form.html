@@ -1,0 +1,378 @@
+<!--
+  Home Valuation Lead Funnel — Standalone HTML Version
+  Use this in Elementor HTML widget if WPForms multi-step isn't available.
+  For WPForms Pro: recreate this structure using the form builder with page breaks.
+-->
+
+<style>
+  .jc-valuation-form {
+    max-width: 560px;
+    margin: 0 auto;
+    font-family: 'Inter', -apple-system, sans-serif;
+  }
+  .jc-valuation-form__header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .jc-valuation-form__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: #1B2A4A;
+    margin-bottom: 12px;
+  }
+  .jc-valuation-form__subtitle {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  /* Progress bar */
+  .jc-progress {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+  .jc-progress__dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: #DDD;
+    transition: background 0.3s;
+  }
+  .jc-progress__dot.active { background: #C9A84C; }
+  .jc-progress__label {
+    text-align: center;
+    font-size: 13px;
+    color: #888;
+    margin-top: 8px;
+  }
+
+  /* Form fields */
+  .jc-form-group { margin-bottom: 20px; }
+  .jc-form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1B2A4A;
+    margin-bottom: 6px;
+  }
+  .jc-form-group input,
+  .jc-form-group select,
+  .jc-form-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    border: 1.5px solid #DDD;
+    border-radius: 6px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+  }
+  .jc-form-group input:focus,
+  .jc-form-group select:focus,
+  .jc-form-group textarea:focus {
+    border-color: #C9A84C;
+    box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15);
+    outline: none;
+  }
+  .jc-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 500px) {
+    .jc-form-row { grid-template-columns: 1fr; }
+  }
+
+  /* Buttons */
+  .jc-form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+  }
+  .jc-form-btn {
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+  }
+  .jc-form-btn--primary {
+    background: #C9A84C;
+    color: #fff;
+  }
+  .jc-form-btn--primary:hover { background: #B8973E; }
+  .jc-form-btn--back {
+    background: transparent;
+    color: #888;
+    border: 1.5px solid #DDD;
+  }
+  .jc-form-btn--back:hover { border-color: #1B2A4A; color: #1B2A4A; }
+
+  /* Privacy note */
+  .jc-privacy-note {
+    text-align: center;
+    font-size: 13px;
+    color: #888;
+    margin-top: 16px;
+  }
+
+  /* Steps visibility */
+  .jc-step { display: none; }
+  .jc-step.active { display: block; }
+
+  /* Thank you */
+  .jc-thank-you { text-align: center; padding: 40px 0; }
+  .jc-thank-you__check {
+    width: 64px; height: 64px;
+    background: #2D8B4E;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+  }
+</style>
+
+<div class="jc-valuation-form" id="jcValuationForm">
+
+  <!-- Header -->
+  <div class="jc-valuation-form__header">
+    <h2 class="jc-valuation-form__title">What's Your Home Worth?</h2>
+    <p class="jc-valuation-form__subtitle">
+      Get a complimentary, expert-prepared valuation — not an algorithm.
+      A real analysis from someone who knows your neighborhood.
+    </p>
+  </div>
+
+  <!-- Progress -->
+  <div class="jc-progress">
+    <span class="jc-progress__dot active" data-step="1"></span>
+    <span class="jc-progress__dot" data-step="2"></span>
+    <span class="jc-progress__dot" data-step="3"></span>
+  </div>
+
+  <form id="valuationForm" action="#" method="POST">
+
+    <!-- STEP 1: Address -->
+    <div class="jc-step active" data-step="1">
+      <div class="jc-form-group">
+        <label for="property_address">Property Address</label>
+        <input type="text" id="property_address" name="property_address"
+               placeholder="Start typing your address..." required>
+      </div>
+      <div class="jc-form-actions" style="justify-content: flex-end;">
+        <button type="button" class="jc-form-btn jc-form-btn--primary" onclick="jcNextStep(2)">
+          Next Step &rarr;
+        </button>
+      </div>
+      <p class="jc-privacy-note">&#128274; Your information is private and never shared.</p>
+    </div>
+
+    <!-- STEP 2: Property Details -->
+    <div class="jc-step" data-step="2">
+      <div class="jc-form-group">
+        <label for="property_type">Property Type</label>
+        <select id="property_type" name="property_type" required>
+          <option value="">Select...</option>
+          <option value="single_family">Single Family</option>
+          <option value="townhome">Townhome</option>
+          <option value="condo">Condo</option>
+          <option value="multi_family">Multi-Family</option>
+        </select>
+      </div>
+      <div class="jc-form-row">
+        <div class="jc-form-group">
+          <label for="bedrooms">Bedrooms</label>
+          <select id="bedrooms" name="bedrooms" required>
+            <option value="">Select...</option>
+            <option value="1">1</option><option value="2">2</option>
+            <option value="3" selected>3</option><option value="4">4</option>
+            <option value="5">5</option><option value="6+">6+</option>
+          </select>
+        </div>
+        <div class="jc-form-group">
+          <label for="bathrooms">Bathrooms</label>
+          <select id="bathrooms" name="bathrooms" required>
+            <option value="">Select...</option>
+            <option value="1">1</option><option value="1.5">1.5</option>
+            <option value="2" selected>2</option><option value="2.5">2.5</option>
+            <option value="3">3</option><option value="3.5">3.5</option>
+            <option value="4+">4+</option>
+          </select>
+        </div>
+      </div>
+      <div class="jc-form-group">
+        <label for="sqft">Approximate Square Footage</label>
+        <input type="number" id="sqft" name="sqft" placeholder="e.g., 1800">
+      </div>
+      <div class="jc-form-group">
+        <label for="condition">Condition</label>
+        <select id="condition" name="condition" required>
+          <option value="">Select...</option>
+          <option value="excellent">Excellent — recently updated</option>
+          <option value="good">Good — well maintained</option>
+          <option value="fair">Fair — needs some work</option>
+          <option value="needs_work">Needs major renovation</option>
+        </select>
+      </div>
+      <div class="jc-form-group">
+        <label for="timeline">Timeline to Sell</label>
+        <select id="timeline" name="timeline" required>
+          <option value="">Select...</option>
+          <option value="exploring">Just exploring</option>
+          <option value="6months">Within 6 months</option>
+          <option value="3months">Within 3 months</option>
+          <option value="asap">ASAP</option>
+        </select>
+      </div>
+      <div class="jc-form-actions">
+        <button type="button" class="jc-form-btn jc-form-btn--back" onclick="jcNextStep(1)">
+          &larr; Back
+        </button>
+        <button type="button" class="jc-form-btn jc-form-btn--primary" onclick="jcNextStep(3)">
+          Almost Done &rarr;
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 3: Contact Info -->
+    <div class="jc-step" data-step="3">
+      <div class="jc-form-row">
+        <div class="jc-form-group">
+          <label for="first_name">First Name</label>
+          <input type="text" id="first_name" name="first_name" required>
+        </div>
+        <div class="jc-form-group">
+          <label for="last_name">Last Name</label>
+          <input type="text" id="last_name" name="last_name" required>
+        </div>
+      </div>
+      <div class="jc-form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="jc-form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required>
+      </div>
+      <div class="jc-form-group">
+        <label>Preferred Language</label>
+        <div style="display:flex;gap:20px;margin-top:6px;">
+          <label style="font-weight:400;display:flex;align-items:center;gap:6px;cursor:pointer;">
+            <input type="radio" name="language" value="english" checked> English
+          </label>
+          <label style="font-weight:400;display:flex;align-items:center;gap:6px;cursor:pointer;">
+            <input type="radio" name="language" value="mandarin"> 中文 (Mandarin)
+          </label>
+        </div>
+      </div>
+      <div class="jc-form-group">
+        <label for="notes">Anything else you'd like us to know? (Optional)</label>
+        <textarea id="notes" name="notes" rows="3"></textarea>
+      </div>
+      <div class="jc-form-actions">
+        <button type="button" class="jc-form-btn jc-form-btn--back" onclick="jcNextStep(2)">
+          &larr; Back
+        </button>
+        <button type="submit" class="jc-form-btn jc-form-btn--primary">
+          Get My Valuation
+        </button>
+      </div>
+      <p class="jc-privacy-note">&#128274; We respect your privacy. No spam, ever.</p>
+    </div>
+
+    <!-- THANK YOU -->
+    <div class="jc-step" data-step="4">
+      <div class="jc-thank-you">
+        <div class="jc-thank-you__check">&#10003;</div>
+        <h3 style="color:#1B2A4A;margin-bottom:12px;">Your Valuation Request Has Been Received!</h3>
+        <p style="color:#555;line-height:1.7;">
+          Jing will personally review your property and send you a
+          detailed home valuation within 24 hours.
+        </p>
+        <div style="margin-top:24px;">
+          <a href="/communities/" style="color:#C9A84C;font-weight:600;">Explore Communities</a>
+          &nbsp;&middot;&nbsp;
+          <a href="/resources/" style="color:#C9A84C;font-weight:600;">Market Insights</a>
+          &nbsp;&middot;&nbsp;
+          <a href="/sell/" style="color:#C9A84C;font-weight:600;">Selling Process</a>
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+<script>
+function jcNextStep(step) {
+  var form = document.getElementById('jcValuationForm');
+  // Hide all steps
+  form.querySelectorAll('.jc-step').forEach(function(s) {
+    s.classList.remove('active');
+  });
+  // Show target step
+  form.querySelector('.jc-step[data-step="' + step + '"]').classList.add('active');
+  // Update progress dots
+  form.querySelectorAll('.jc-progress__dot').forEach(function(dot) {
+    var dotStep = parseInt(dot.getAttribute('data-step'));
+    dot.classList.toggle('active', dotStep <= step);
+  });
+  // Scroll to top of form
+  form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  // GA4 tracking
+  if (typeof gtag === 'function') {
+    var eventMap = {
+      2: 'valuation_step1_complete',
+      3: 'valuation_step2_complete'
+    };
+    if (eventMap[step]) {
+      gtag('event', eventMap[step]);
+    }
+  }
+}
+
+// Handle form submission
+document.getElementById('valuationForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  // Collect form data
+  var formData = new FormData(this);
+  var data = {};
+  formData.forEach(function(value, key) { data[key] = value; });
+
+  // GA4 + Meta tracking
+  if (typeof gtag === 'function') {
+    gtag('event', 'valuation_submitted', data);
+  }
+  if (typeof fbq === 'function') {
+    fbq('track', 'Lead', {
+      content_name: 'Home Valuation',
+      content_category: 'Seller Lead'
+    });
+  }
+
+  // Show thank you step
+  jcNextStep(4);
+
+  /*
+   * TODO: Send data to your backend.
+   * Option 1: Replace form action with your WPForms AJAX endpoint
+   * Option 2: Use fetch() to POST to a custom REST endpoint
+   * Option 3: Send via EmailJS or Formspree as a quick solution:
+   *
+   * fetch('https://formspree.io/f/YOUR_FORM_ID', {
+   *   method: 'POST',
+   *   headers: { 'Content-Type': 'application/json' },
+   *   body: JSON.stringify(data)
+   * });
+   */
+});
+</script>
