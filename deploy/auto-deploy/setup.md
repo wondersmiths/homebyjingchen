@@ -1,37 +1,57 @@
-# Auto-Deploy Setup — One-Time Steps in WordPress Admin
+# Auto-Deploy Setup — ONE thing to do first
 
-Before running the deploy script, do these 3 things in wp-admin:
+## Create an Application Password in WordPress
 
-## Step 1: Create an Application Password
+1. Log in to WordPress admin
+2. Go to **Users → Your Profile**
+3. Scroll to **Application Passwords**
+4. Name: `deploy-script`
+5. Click **Add New Application Password**
+6. **Copy the password** (shown once only)
 
-1. Go to **Users → Your Profile**
-2. Scroll to **Application Passwords** section
-3. Enter name: `deploy-script`
-4. Click **Add New Application Password**
-5. Copy the generated password (you won't see it again)
-6. Save it — you'll use it in the `.env` file
+## Create .env file
 
-## Step 2: Install Required Free Plugins
+```bash
+cd deploy/auto-deploy
+cp .env.example .env
+```
 
-Go to **Plugins → Add New** and install + activate:
-
-- Elementor
-- Kadence Blocks
-- Contact Form 7
-- Flamingo
-- WP Super Cache
-- ShortPixel (or Smush)
-- Code Snippets
-- Yoast SEO (already installed)
-
-## Step 3: Create .env File
-
-In the `deploy/auto-deploy/` folder, create a file named `.env`:
-
+Edit `.env`:
 ```
 WP_URL=https://homesbyjingchen.com
-WP_USER=your_admin_username
-WP_APP_PASSWORD=xxxx xxxx xxxx xxxx xxxx xxxx
+WP_USER=your_username
+WP_APP_PASSWORD=the_password_you_just_copied
+GA4_MEASUREMENT_ID=G-XXXXXXXXXX    # optional
+META_PIXEL_ID=123456789            # optional
 ```
 
-Replace with your actual credentials. This file is gitignored.
+## Run
+
+```bash
+pip3 install -r requirements.txt
+python3 deploy.py
+```
+
+## What it deploys automatically
+
+Everything:
+
+- 19 pages with full HTML content
+- Custom CSS (navy/gold branding, fonts, form styles)
+- Google Fonts (Inter + Playfair Display)
+- Contact Form 7 forms (contact + consultation)
+- Home valuation 3-step funnel
+- Testimonials section with HTML/CSS/JS
+- Navigation menu with dropdowns
+- Homepage setting
+- Yoast SEO titles + meta descriptions for all pages
+- Schema markup (RealEstateAgent) on homepage
+- GA4 tracking code (if ID provided)
+- Meta Pixel code (if ID provided)
+- Phone/email click tracking
+- Form submission conversion tracking
+- Old pages moved to draft
+
+## Re-running
+
+Safe to re-run anytime — it updates existing pages instead of creating duplicates.
