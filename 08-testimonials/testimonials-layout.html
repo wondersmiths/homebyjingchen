@@ -1,0 +1,469 @@
+<!--
+  TESTIMONIALS SECTION — HomeByJingChen
+  For use with Elementor HTML widget or Custom HTML section.
+
+  Design Notes:
+  - Background: #FDF8F0 (warm cream)
+  - Cards: white with subtle shadow
+  - Stars: #C9A84C (gold)
+  - Text: #1B2A4A (navy)
+  - Font: Inherit from site theme
+-->
+
+<style>
+  .jc-testimonials {
+    background-color: #FDF8F0;
+    padding: 80px 20px;
+    font-family: inherit;
+  }
+
+  .jc-testimonials__header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 60px;
+  }
+
+  .jc-testimonials__title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1B2A4A;
+    margin-bottom: 12px;
+  }
+
+  .jc-testimonials__subtitle {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  /* Source Tabs */
+  .jc-testimonials__tabs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .jc-testimonials__tab {
+    padding: 10px 24px;
+    border: 2px solid #1B2A4A;
+    border-radius: 30px;
+    background: transparent;
+    color: #1B2A4A;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .jc-testimonials__tab:hover,
+  .jc-testimonials__tab--active {
+    background: #1B2A4A;
+    color: #fff;
+  }
+
+  /* Written Reviews Grid */
+  .jc-testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto 60px;
+  }
+
+  @media (max-width: 992px) {
+    .jc-testimonials__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .jc-testimonials__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .jc-testimonial-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .jc-testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .jc-testimonial-card__stars {
+    color: #C9A84C;
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+
+  .jc-testimonial-card__source {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .jc-testimonial-card__source img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .jc-testimonial-card__quote {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #333;
+    font-style: italic;
+    flex-grow: 1;
+  }
+
+  .jc-testimonial-card__author {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1B2A4A;
+  }
+
+  .jc-testimonial-card__location {
+    font-size: 13px;
+    color: #888;
+  }
+
+  /* Video Testimonials */
+  .jc-testimonials__video-section {
+    max-width: 1200px;
+    margin: 0 auto 60px;
+  }
+
+  .jc-testimonials__video-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1B2A4A;
+    margin-bottom: 30px;
+  }
+
+  .jc-testimonials__video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  @media (max-width: 768px) {
+    .jc-testimonials__video-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .jc-video-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .jc-video-card__embed {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+  }
+
+  .jc-video-card__embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .jc-video-card__info {
+    padding: 20px;
+  }
+
+  .jc-video-card__name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1B2A4A;
+  }
+
+  .jc-video-card__desc {
+    font-size: 14px;
+    color: #888;
+    margin-top: 4px;
+  }
+
+  /* Aggregate Rating */
+  .jc-testimonials__aggregate {
+    text-align: center;
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .jc-testimonials__aggregate-stars {
+    font-size: 32px;
+    color: #C9A84C;
+    letter-spacing: 4px;
+    margin-bottom: 12px;
+  }
+
+  .jc-testimonials__aggregate-text {
+    font-size: 18px;
+    color: #1B2A4A;
+    font-weight: 600;
+  }
+
+  .jc-testimonials__aggregate-sub {
+    font-size: 14px;
+    color: #888;
+    margin-top: 8px;
+  }
+
+  /* CTA */
+  .jc-testimonials__cta {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .jc-testimonials__cta-button {
+    display: inline-block;
+    padding: 16px 40px;
+    background-color: #C9A84C;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+  }
+
+  .jc-testimonials__cta-button:hover {
+    background-color: #B8973E;
+    color: #fff;
+  }
+</style>
+
+<section class="jc-testimonials">
+
+  <!-- Header -->
+  <div class="jc-testimonials__header">
+    <h2 class="jc-testimonials__title">What My Clients Say</h2>
+    <p class="jc-testimonials__subtitle">
+      Real stories from real families. These reviews come directly from Google, Zillow, and personal video testimonials.
+    </p>
+  </div>
+
+  <!-- Source Filter Tabs -->
+  <div class="jc-testimonials__tabs">
+    <button class="jc-testimonials__tab jc-testimonials__tab--active" data-filter="all">All Reviews</button>
+    <button class="jc-testimonials__tab" data-filter="google">Google</button>
+    <button class="jc-testimonials__tab" data-filter="zillow">Zillow</button>
+    <button class="jc-testimonials__tab" data-filter="video">Video</button>
+  </div>
+
+  <!-- Written Reviews Grid -->
+  <div class="jc-testimonials__grid">
+
+    <!-- Review 1 — Google -->
+    <div class="jc-testimonial-card" data-source="google">
+      <div class="jc-testimonial-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <span class="jc-testimonial-card__source">
+        <!-- Replace with Google icon -->
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#4285F4"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        Google Review
+      </span>
+      <p class="jc-testimonial-card__quote">
+        "Jing made our home purchase feel easy in what we thought would be the most stressful experience of our lives. Her data-backed approach gave us confidence to move fast in a competitive market."
+      </p>
+      <div>
+        <div class="jc-testimonial-card__author">Sarah & Tom</div>
+        <div class="jc-testimonial-card__location">Buyers — Cupertino</div>
+      </div>
+    </div>
+
+    <!-- Review 2 — Zillow -->
+    <div class="jc-testimonial-card" data-source="zillow">
+      <div class="jc-testimonial-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <span class="jc-testimonial-card__source">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#006AFF"><rect width="24" height="24" rx="4" fill="#006AFF"/><text x="4" y="18" fill="white" font-size="16" font-weight="bold">Z</text></svg>
+        Zillow Review
+      </span>
+      <p class="jc-testimonial-card__quote">
+        "Her market knowledge is unmatched. Jing knew exactly how to position our home, and we sold above asking in just 5 days. The entire process was handled with professionalism and care."
+      </p>
+      <div>
+        <div class="jc-testimonial-card__author">David L.</div>
+        <div class="jc-testimonial-card__location">Seller — Palo Alto</div>
+      </div>
+    </div>
+
+    <!-- Review 3 — Google -->
+    <div class="jc-testimonial-card" data-source="google">
+      <div class="jc-testimonial-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <span class="jc-testimonial-card__source">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#4285F4"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        Google Review
+      </span>
+      <p class="jc-testimonial-card__quote">
+        "We were first-time buyers and Jing made the entire process seamless. She explained everything clearly and fought hard for us when it mattered most."
+      </p>
+      <div>
+        <div class="jc-testimonial-card__author">Mei & Kevin</div>
+        <div class="jc-testimonial-card__location">Buyers — Sunnyvale</div>
+      </div>
+    </div>
+
+    <!-- Review 4 — Zillow -->
+    <div class="jc-testimonial-card" data-source="zillow">
+      <div class="jc-testimonial-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <span class="jc-testimonial-card__source">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#006AFF"><rect width="24" height="24" rx="4" fill="#006AFF"/><text x="4" y="18" fill="white" font-size="16" font-weight="bold">Z</text></svg>
+        Zillow Review
+      </span>
+      <p class="jc-testimonial-card__quote">
+        "Jing's staging and marketing strategy transformed our home. The professional photos and virtual tour generated incredible interest. We received 6 offers in the first weekend."
+      </p>
+      <div>
+        <div class="jc-testimonial-card__author">The Wang Family</div>
+        <div class="jc-testimonial-card__location">Sellers — Sunnyvale</div>
+      </div>
+    </div>
+
+    <!-- Review 5 — Google -->
+    <div class="jc-testimonial-card" data-source="google">
+      <div class="jc-testimonial-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <span class="jc-testimonial-card__source">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#4285F4"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        Google Review
+      </span>
+      <p class="jc-testimonial-card__quote">
+        "We relocated from the East Coast and Jing made everything seamless. She knew exactly which neighborhoods would work for our family and school priorities."
+      </p>
+      <div>
+        <div class="jc-testimonial-card__author">The Patel Family</div>
+        <div class="jc-testimonial-card__location">Buyers — Cupertino</div>
+      </div>
+    </div>
+
+    <!-- Review 6 — Google -->
+    <div class="jc-testimonial-card" data-source="google">
+      <div class="jc-testimonial-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <span class="jc-testimonial-card__source">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#4285F4"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        Google Review
+      </span>
+      <p class="jc-testimonial-card__quote">
+        "Jing negotiated brilliantly on our behalf. We won our dream home against 8 other offers — without overpaying. Her strategy was spot-on."
+      </p>
+      <div>
+        <div class="jc-testimonial-card__author">Alex & Christina</div>
+        <div class="jc-testimonial-card__location">Buyers — Mountain View</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Video Testimonials -->
+  <div class="jc-testimonials__video-section">
+    <h3 class="jc-testimonials__video-title">Video Testimonials</h3>
+    <div class="jc-testimonials__video-grid">
+
+      <!-- Video 1 -->
+      <div class="jc-video-card" data-source="video">
+        <div class="jc-video-card__embed">
+          <!-- Replace src with actual YouTube embed URL -->
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"
+                  title="Client Testimonial - The Chen Family"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  loading="lazy"></iframe>
+        </div>
+        <div class="jc-video-card__info">
+          <div class="jc-video-card__name">The Chen Family</div>
+          <div class="jc-video-card__desc">First-time buyers in Sunnyvale share their experience</div>
+        </div>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="jc-video-card" data-source="video">
+        <div class="jc-video-card__embed">
+          <!-- Replace src with actual YouTube embed URL -->
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_2"
+                  title="Client Testimonial - The Martinez Family"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  loading="lazy"></iframe>
+        </div>
+        <div class="jc-video-card__info">
+          <div class="jc-video-card__name">The Martinez Family</div>
+          <div class="jc-video-card__desc">Sellers who got top dollar for their Cupertino home</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Aggregate Rating -->
+  <div class="jc-testimonials__aggregate">
+    <div class="jc-testimonials__aggregate-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+    <div class="jc-testimonials__aggregate-text">5.0 Average Rating Across All Platforms</div>
+    <div class="jc-testimonials__aggregate-sub">Based on 50+ verified reviews on Google and Zillow</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="jc-testimonials__cta">
+    <a href="/contact" class="jc-testimonials__cta-button">Ready to Write Your Success Story?</a>
+  </div>
+
+</section>
+
+<!-- Optional: Tab Filtering Script -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const tabs = document.querySelectorAll('.jc-testimonials__tab');
+    const cards = document.querySelectorAll('.jc-testimonial-card, .jc-video-card');
+    const videoSection = document.querySelector('.jc-testimonials__video-section');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', function() {
+        const filter = this.getAttribute('data-filter');
+
+        // Update active tab
+        tabs.forEach(t => t.classList.remove('jc-testimonials__tab--active'));
+        this.classList.add('jc-testimonials__tab--active');
+
+        // Filter cards
+        cards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-source') === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        // Show/hide video section
+        if (videoSection) {
+          if (filter === 'all' || filter === 'video') {
+            videoSection.style.display = '';
+          } else {
+            videoSection.style.display = 'none';
+          }
+        }
+      });
+    });
+  });
+</script>
