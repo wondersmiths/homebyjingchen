@@ -110,6 +110,12 @@ a.jc-city p{color:rgba(255,255,255,.7);font-size:14px;margin:0}
 .ast-builder-menu .menu-item>a,.ast-header-break-point .ast-button,.main-header-menu .menu-item>a{color:#fff!important}
 .ast-builder-menu .menu-item:hover>a{color:#C9A84C!important}
 .ast-header-button-1 .ast-custom-button{background:#C9A84C!important;color:#fff!important}
+.ast-builder-menu .sub-menu,.main-header-menu .sub-menu,.ast-desktop-popup-content .sub-menu{background:#1B2A4A!important;border:none!important;border-radius:8px!important;box-shadow:0 8px 30px rgba(0,0,0,.25)!important;padding:8px 0!important;min-width:220px!important}
+.ast-builder-menu .sub-menu .menu-item>a,.main-header-menu .sub-menu .menu-item>a{color:rgba(255,255,255,.85)!important;padding:10px 24px!important;font-size:15px!important;border-bottom:1px solid rgba(255,255,255,.08)!important;transition:all .2s!important}
+.ast-builder-menu .sub-menu .menu-item:last-child>a,.main-header-menu .sub-menu .menu-item:last-child>a{border-bottom:none!important}
+.ast-builder-menu .sub-menu .menu-item>a:hover,.main-header-menu .sub-menu .menu-item>a:hover{color:#C9A84C!important;background:rgba(255,255,255,.08)!important;padding-left:28px!important}
+.ast-header-break-point .main-navigation .sub-menu,.ast-header-break-point .ast-builder-menu .sub-menu{background:#152238!important;border-radius:0!important;box-shadow:none!important}
+.ast-header-break-point .sub-menu .menu-item>a{color:rgba(255,255,255,.8)!important;padding:12px 24px 12px 32px!important}
 .site-footer,.ast-footer{background:#1B2A4A!important;color:rgba(255,255,255,.7)!important}
 .site-footer a{color:#C9A84C!important}
 .wpcf7 input[type="text"],.wpcf7 input[type="email"],.wpcf7 input[type="tel"],.wpcf7 textarea,.wpcf7 select{width:100%!important;padding:14px 16px!important;border:1.5px solid #DDD!important;border-radius:6px!important;font-family:'Inter',sans-serif!important;font-size:16px!important}
@@ -162,10 +168,10 @@ def page_home():
 </div>
 
 <div class="jc-stats">
-<div><strong>150+</strong><span>Families Served</span></div>
+<div><strong>50+</strong><span>Families Served</span></div>
 <div><strong>5.0</strong><span>Google Rating</span></div>
-<div><strong>$2B+</strong><span>in Transactions</span></div>
-<div><strong>10+</strong><span>Years Experience</span></div>
+<div><strong>$100M+</strong><span>in Transactions</span></div>
+<div><strong>5+</strong><span>Years Experience</span></div>
 </div>
 
 <div class="jc-s" style="text-align:center">
@@ -209,14 +215,17 @@ def page_home():
 <div class="jc-s jc-cream" style="text-align:center">
 <h2>Explore Bay Area Communities</h2>
 <p style="color:#666;margin-bottom:40px">Discover what makes each neighborhood special &mdash; from South Bay to Tri-Valley.</p>
-<div class="jc-g5">
+<div class="jc-g3">
 <a href="/communities/sunnyvale/" class="jc-city"><h3>Sunnyvale</h3><p>Tech hub &middot; Top schools</p></a>
 <a href="/communities/cupertino/" class="jc-city"><h3>Cupertino</h3><p>Apple HQ &middot; #1 schools</p></a>
 <a href="/communities/palo-alto/" class="jc-city"><h3>Palo Alto</h3><p>Stanford &middot; Culture</p></a>
 <a href="/communities/mountain-view/" class="jc-city"><h3>Mountain View</h3><p>Google HQ &middot; Downtown</p></a>
 <a href="/communities/santa-clara/" class="jc-city"><h3>Santa Clara</h3><p>Great value &middot; Tech jobs</p></a>
+<a href="/communities/pleasanton/" class="jc-city"><h3>Pleasanton</h3><p>Top schools &middot; Main Street</p></a>
+<a href="/communities/dublin/" class="jc-city"><h3>Dublin</h3><p>New homes &middot; BART access</p></a>
+<a href="/communities/san-ramon/" class="jc-city"><h3>San Ramon</h3><p>Bishop Ranch &middot; Top schools</p></a>
+<a href="/communities/fremont/" class="jc-city"><h3>Fremont</h3><p>Mission Peak &middot; Diverse</p></a>
 </div>
-<p style="margin-top:24px;color:#888;font-size:14px">Also serving Tri-Valley (Pleasanton, Dublin, Livermore), East Bay (Fremont, Milpitas, Union City), and beyond.</p>
 </div>
 
 <div class="jc-cta-bar">
@@ -295,8 +304,8 @@ def page_about():
 </div>
 
 <div class="jc-stats">
-<div><strong>150+</strong><span>Families Served</span></div>
-<div><strong>10+</strong><span>Years Experience</span></div>
+<div><strong>50+</strong><span>Families Served</span></div>
+<div><strong>5+</strong><span>Years Experience</span></div>
 <div><strong>5.0</strong><span>Google Rating</span></div>
 <div><strong>Bilingual</strong><span>English &amp; &#x4E2D;&#x6587;</span></div>
 </div>
@@ -390,7 +399,7 @@ def page_sell():
 <div class="jc-stats">
 <div><strong>98%</strong><span>List-to-Sale Ratio</span></div>
 <div><strong>14</strong><span>Avg Days on Market</span></div>
-<div><strong>$2B+</strong><span>Total Sales Volume</span></div>
+<div><strong>$100M+</strong><span>Total Sales Volume</span></div>
 </div>
 
 <div class="jc-cta-bar">
@@ -641,7 +650,7 @@ def page_success_stories():
 </div>
 
 <div class="jc-stats">
-<div><strong>150+</strong><span>Families Helped</span></div>
+<div><strong>50+</strong><span>Families Helped</span></div>
 <div><strong>5.0</strong><span>Google Rating</span></div>
 <div><strong>98%</strong><span>Client Satisfaction</span></div>
 </div>
