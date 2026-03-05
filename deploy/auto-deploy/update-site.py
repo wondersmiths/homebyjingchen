@@ -429,6 +429,194 @@ def page_sell():
 """ + BROKERAGE_FOOTER
 
 
+def page_home_valuation():
+    return CSS + f"""
+<div class="jc-hero" style="min-height:40vh;background:#1B2A4A">
+<div>
+<h1>What's Your Bay Area Home Worth?</h1>
+<p>Get a complimentary, expert-prepared valuation &mdash; not an algorithm. A real analysis from someone who knows your neighborhood.</p>
+</div>
+</div>
+
+<div class="jc-s">
+<style>
+.jc-val-form{{max-width:560px;margin:0 auto}}
+.jc-val-form .jc-progress{{display:flex;justify-content:center;gap:8px;margin-bottom:32px}}
+.jc-val-form .jc-progress__dot{{width:12px;height:12px;border-radius:50%;background:#DDD;transition:background .3s}}
+.jc-val-form .jc-progress__dot.active{{background:#C9A84C}}
+.jc-val-form .jc-fg{{margin-bottom:20px}}
+.jc-val-form .jc-fg label{{display:block;font-size:14px;font-weight:600;color:#1B2A4A;margin-bottom:6px}}
+.jc-val-form .jc-fg input,.jc-val-form .jc-fg select,.jc-val-form .jc-fg textarea{{width:100%;padding:14px 16px;font-size:16px;font-family:'Inter',sans-serif;border:1.5px solid #DDD;border-radius:6px;transition:border-color .3s,box-shadow .3s;box-sizing:border-box}}
+.jc-val-form .jc-fg input:focus,.jc-val-form .jc-fg select:focus,.jc-val-form .jc-fg textarea:focus{{border-color:#C9A84C;box-shadow:0 0 0 3px rgba(201,168,76,.15);outline:none}}
+.jc-val-form .jc-fr{{display:grid;grid-template-columns:1fr 1fr;gap:16px}}
+@media(max-width:500px){{.jc-val-form .jc-fr{{grid-template-columns:1fr}}}}
+.jc-val-form .jc-fa{{display:flex;justify-content:space-between;align-items:center;margin-top:24px}}
+.jc-val-form .jc-fb{{padding:16px 32px;font-size:16px;font-weight:700;font-family:'Inter',sans-serif;border-radius:6px;cursor:pointer;transition:all .3s;border:none}}
+.jc-val-form .jc-fb-gold{{background:#C9A84C;color:#fff}}.jc-val-form .jc-fb-gold:hover{{background:#B8973E}}
+.jc-val-form .jc-fb-back{{background:transparent;color:#888;border:1.5px solid #DDD}}.jc-val-form .jc-fb-back:hover{{border-color:#1B2A4A;color:#1B2A4A}}
+.jc-val-form .jc-pn{{text-align:center;font-size:13px;color:#888;margin-top:16px}}
+.jc-val-form .jc-vs{{display:none}}.jc-val-form .jc-vs.active{{display:block}}
+.jc-val-form .jc-ty{{text-align:center;padding:40px 0}}
+.jc-val-form .jc-ty-chk{{width:64px;height:64px;background:#2D8B4E;border-radius:50%;color:#fff;font-size:32px;display:flex;align-items:center;justify-content:center;margin:0 auto 24px}}
+</style>
+
+<div class="jc-val-form" id="jcValForm">
+
+<div class="jc-progress">
+<span class="jc-progress__dot active" data-step="1"></span>
+<span class="jc-progress__dot" data-step="2"></span>
+<span class="jc-progress__dot" data-step="3"></span>
+</div>
+
+<form id="valForm" action="#" method="POST">
+
+<div class="jc-vs active" data-step="1">
+<div class="jc-fg">
+<label for="val_address">Property Address</label>
+<input type="text" id="val_address" name="property_address" placeholder="Start typing your address..." required>
+</div>
+<div class="jc-fa" style="justify-content:flex-end">
+<button type="button" class="jc-fb jc-fb-gold" onclick="jcValStep(2)">Next Step &rarr;</button>
+</div>
+<p class="jc-pn">&#128274; Your information is private and never shared.</p>
+</div>
+
+<div class="jc-vs" data-step="2">
+<div class="jc-fg">
+<label for="val_type">Property Type</label>
+<select id="val_type" name="property_type" required>
+<option value="">Select...</option>
+<option value="single_family">Single Family</option>
+<option value="townhome">Townhome</option>
+<option value="condo">Condo</option>
+<option value="multi_family">Multi-Family</option>
+</select>
+</div>
+<div class="jc-fr">
+<div class="jc-fg">
+<label for="val_bed">Bedrooms</label>
+<select id="val_bed" name="bedrooms" required>
+<option value="">Select...</option>
+<option value="1">1</option><option value="2">2</option>
+<option value="3" selected>3</option><option value="4">4</option>
+<option value="5">5</option><option value="6+">6+</option>
+</select>
+</div>
+<div class="jc-fg">
+<label for="val_bath">Bathrooms</label>
+<select id="val_bath" name="bathrooms" required>
+<option value="">Select...</option>
+<option value="1">1</option><option value="1.5">1.5</option>
+<option value="2" selected>2</option><option value="2.5">2.5</option>
+<option value="3">3</option><option value="3.5">3.5</option>
+<option value="4+">4+</option>
+</select>
+</div>
+</div>
+<div class="jc-fg">
+<label for="val_sqft">Approximate Square Footage</label>
+<input type="number" id="val_sqft" name="sqft" placeholder="e.g., 1800">
+</div>
+<div class="jc-fg">
+<label for="val_cond">Condition</label>
+<select id="val_cond" name="condition" required>
+<option value="">Select...</option>
+<option value="excellent">Excellent &mdash; recently updated</option>
+<option value="good">Good &mdash; well maintained</option>
+<option value="fair">Fair &mdash; needs some work</option>
+<option value="needs_work">Needs major renovation</option>
+</select>
+</div>
+<div class="jc-fg">
+<label for="val_time">Timeline to Sell</label>
+<select id="val_time" name="timeline" required>
+<option value="">Select...</option>
+<option value="exploring">Just exploring</option>
+<option value="6months">Within 6 months</option>
+<option value="3months">Within 3 months</option>
+<option value="asap">ASAP</option>
+</select>
+</div>
+<div class="jc-fa">
+<button type="button" class="jc-fb jc-fb-back" onclick="jcValStep(1)">&larr; Back</button>
+<button type="button" class="jc-fb jc-fb-gold" onclick="jcValStep(3)">Almost Done &rarr;</button>
+</div>
+</div>
+
+<div class="jc-vs" data-step="3">
+<div class="jc-fr">
+<div class="jc-fg">
+<label for="val_fn">First Name</label>
+<input type="text" id="val_fn" name="first_name" required>
+</div>
+<div class="jc-fg">
+<label for="val_ln">Last Name</label>
+<input type="text" id="val_ln" name="last_name" required>
+</div>
+</div>
+<div class="jc-fg">
+<label for="val_email">Email Address</label>
+<input type="email" id="val_email" name="email" required>
+</div>
+<div class="jc-fg">
+<label for="val_phone">Phone Number</label>
+<input type="tel" id="val_phone" name="phone" required>
+</div>
+<div class="jc-fg">
+<label>Preferred Language</label>
+<div style="display:flex;gap:20px;margin-top:6px">
+<label style="font-weight:400;display:flex;align-items:center;gap:6px;cursor:pointer">
+<input type="radio" name="language" value="english" checked> English
+</label>
+<label style="font-weight:400;display:flex;align-items:center;gap:6px;cursor:pointer">
+<input type="radio" name="language" value="mandarin"> &#x4E2D;&#x6587; (Mandarin)
+</label>
+</div>
+</div>
+<div class="jc-fg">
+<label for="val_notes">Anything else you'd like us to know? (Optional)</label>
+<textarea id="val_notes" name="notes" rows="3"></textarea>
+</div>
+<div class="jc-fa">
+<button type="button" class="jc-fb jc-fb-back" onclick="jcValStep(2)">&larr; Back</button>
+<button type="submit" class="jc-fb jc-fb-gold">Get My Valuation</button>
+</div>
+<p class="jc-pn">&#128274; We respect your privacy. No spam, ever.</p>
+</div>
+
+<div class="jc-vs" data-step="4">
+<div class="jc-ty">
+<div class="jc-ty-chk">&#10003;</div>
+<h3 style="color:#1B2A4A;margin-bottom:12px">Your Valuation Request Has Been Received!</h3>
+<p style="color:#555;line-height:1.7">Jing will personally review your property and send you a detailed home valuation within 24 hours.</p>
+<div style="margin-top:24px">
+<a href="/communities/" style="color:#C9A84C;font-weight:600">Explore Communities</a>
+&nbsp;&middot;&nbsp;
+<a href="/sell/" style="color:#C9A84C;font-weight:600">Selling Process</a>
+&nbsp;&middot;&nbsp;
+<a href="/contact/" style="color:#C9A84C;font-weight:600">Contact Jing</a>
+</div>
+</div>
+</div>
+
+</form>
+</div>
+
+<script>
+function jcValStep(s){{var f=document.getElementById('jcValForm');f.querySelectorAll('.jc-vs').forEach(function(e){{e.classList.remove('active')}});f.querySelector('.jc-vs[data-step="'+s+'"]').classList.add('active');f.querySelectorAll('.jc-progress__dot').forEach(function(d){{var ds=parseInt(d.getAttribute('data-step'));d.classList.toggle('active',ds<=s)}});f.scrollIntoView({{behavior:'smooth',block:'start'}});if(typeof gtag==='function'){{var m={{2:'valuation_step1_complete',3:'valuation_step2_complete'}};if(m[s])gtag('event',m[s])}}}}
+document.getElementById('valForm').addEventListener('submit',function(e){{e.preventDefault();var fd=new FormData(this);var d={{}};fd.forEach(function(v,k){{d[k]=v}});if(typeof gtag==='function')gtag('event','valuation_submitted',d);if(typeof fbq==='function')fbq('track','Lead',{{content_name:'Home Valuation',content_category:'Seller Lead'}});jcValStep(4)}});
+</script>
+</div>
+
+<div class="jc-cta-bar">
+<h2>Prefer to Talk Directly?</h2>
+<p>Call or email Jing for a personal consultation about your home's value.</p>
+<a href="tel:{PHONE_LINK}" class="jc-btn jc-btn-gold">{PHONE}</a>
+<p style="margin-top:16px;font-size:14px;opacity:.7"><a href="mailto:{EMAIL}" style="color:#C9A84C">{EMAIL}</a></p>
+</div>
+""" + BROKERAGE_FOOTER
+
+
 def page_contact(cf_id, cs_id):
     cf_short = f'[contact-form-7 id="{cf_id}" title="Contact Form"]' if cf_id else '<p><em>Contact form loading... Please refresh the page.</em></p>'
     cs_short = f'[contact-form-7 id="{cs_id}" title="Schedule Consultation"]' if cs_id else ''
@@ -853,6 +1041,7 @@ def update_pages(contact_id, consult_id):
     update("about", page_about(), "About Jing Chen")
     update("buy", page_buy(), "Buyer Services")
     update("sell", page_sell(), "Seller Services")
+    update("home-valuation", page_home_valuation(), "Home Valuation")
     update("contact", page_contact(contact_id, consult_id), "Contact")
     update("listings", page_listings(), "Featured Listings")
     update("success-stories", page_success_stories(), "Success Stories")
