@@ -206,7 +206,7 @@ def push_css():
     css_content = css_file.read_text()
 
     # Prepend Google Fonts import (no PHP needed)
-    font_import = '@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap");\n\n'
+    font_import = '@import url("https://fonts.googleapis.com/css2?family=Antic+Didone&family=Poppins:wght@300;400;500;600;700&display=swap");\n\n'
 
     # Append CF7 form styles (no PHP needed)
     cf7_styles = """
@@ -219,33 +219,33 @@ def push_css():
 .wpcf7 select {
   width: 100% !important;
   padding: 14px 16px !important;
-  font-family: 'Inter', sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   font-size: 16px !important;
   border: 1.5px solid #DDD !important;
-  border-radius: 6px !important;
+  border-radius: 0 !important;
   transition: border-color 0.3s, box-shadow 0.3s !important;
   box-sizing: border-box !important;
 }
 .wpcf7 input:focus, .wpcf7 textarea:focus, .wpcf7 select:focus {
-  border-color: #C9A84C !important;
-  box-shadow: 0 0 0 3px rgba(201,168,76,0.15) !important;
+  border-color: #ccb091 !important;
+  box-shadow: none !important;
   outline: none !important;
 }
 .wpcf7 input[type="submit"] {
-  background: #C9A84C !important;
+  background: #000 !important;
   color: #fff !important;
-  font-family: 'Inter', sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   font-size: 16px !important;
   font-weight: 700 !important;
   padding: 16px 32px !important;
   border: none !important;
-  border-radius: 6px !important;
+  border-radius: 0 !important;
   cursor: pointer !important;
   transition: background 0.3s !important;
 }
-.wpcf7 input[type="submit"]:hover { background: #B8973E !important; }
+.wpcf7 input[type="submit"]:hover { background: #ccb091 !important; }
 .wpcf7 p { margin-bottom: 16px; }
-.wpcf7-response-output { border-radius: 6px !important; font-family: 'Inter', sans-serif !important; }
+.wpcf7-response-output { border-radius: 0 !important; font-family: 'Poppins', sans-serif !important; }
 """
 
     full_css = font_import + css_content + "\n" + cf7_styles
@@ -316,6 +316,8 @@ PAGES = [
     ("Mountain View", "mountain-view", "communities", "07-community-pages/mountain-view.md", "md"),
     ("Santa Clara", "santa-clara", "communities", "07-community-pages/santa-clara.md", "md"),
     ("Featured Listings", "listings", None, None, "placeholder_listings"),
+    ("Home Search", "home-search", None, None, "placeholder_search"),
+    ("Past Transactions", "past-transactions", None, None, "placeholder_transactions"),
     ("Success Stories", "success-stories", None, "08-testimonials/testimonials-layout.html", "html"),
     ("Resources", "resources", None, None, "placeholder_resources"),
     ("Contact", "contact", None, None, "placeholder_contact"),
@@ -334,31 +336,33 @@ SCHEMA_HTML = """
 "areaServed":[{"@type":"City","name":"Sunnyvale"},{"@type":"City","name":"Cupertino"},
 {"@type":"City","name":"Palo Alto"},{"@type":"City","name":"Mountain View"},{"@type":"City","name":"Santa Clara"}],
 "knowsLanguage":["en","zh"],
-"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"50"}}
+}
 </script>
 """.strip()
 
 PLACEHOLDER_CONTENT = {
-    "placeholder_search": '<div style="text-align:center;padding:60px 20px;max-width:800px;margin:0 auto;"><h1 style="font-family:\'Playfair Display\',serif;color:#1B2A4A;">Search Silicon Valley Homes</h1><p style="color:#555;margin-bottom:40px;">Browse available properties across Sunnyvale, Cupertino, Palo Alto, Mountain View, and Santa Clara.</p><p style="margin-top:30px;"><a href="/contact/" style="background:#C9A84C;color:#fff;padding:16px 32px;border-radius:6px;text-decoration:none;font-weight:700;">Contact Jing for Listings</a></p></div>',
+    "placeholder_search": '<div style="text-align:center;padding:60px 20px;max-width:800px;margin:0 auto;"><h1 style="font-family:\'Antic Didone\',serif;color:#000;text-transform:uppercase;letter-spacing:0.04em;">Search Silicon Valley Homes</h1><p style="color:#555;margin-bottom:40px;">Browse available properties across Sunnyvale, Cupertino, Palo Alto, Mountain View, and Santa Clara.</p><p style="margin-top:30px;"><a href="/contact/" style="background:#C9A84C;color:#fff;padding:16px 32px;border-radius:6px;text-decoration:none;font-weight:700;">Contact Jing for Listings</a></p></div>',
 
-    "placeholder_communities": '<div style="text-align:center;padding:60px 20px;max-width:900px;margin:0 auto;"><h1 style="font-family:\'Playfair Display\',serif;color:#1B2A4A;">Explore Silicon Valley Communities</h1><p style="color:#555;margin-bottom:40px;">Discover what makes each neighborhood unique.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;margin-top:40px;"><a href="/communities/sunnyvale/" style="background:#1B2A4A;color:#fff;padding:40px 24px;border-radius:12px;text-decoration:none;text-align:center;"><h3 style="color:#fff;font-family:\'Playfair Display\',serif;">Sunnyvale</h3><p style="color:rgba(255,255,255,0.7);font-size:14px;">Tech hub, top schools</p></a><a href="/communities/cupertino/" style="background:#1B2A4A;color:#fff;padding:40px 24px;border-radius:12px;text-decoration:none;text-align:center;"><h3 style="color:#fff;font-family:\'Playfair Display\',serif;">Cupertino</h3><p style="color:rgba(255,255,255,0.7);font-size:14px;">Apple HQ, #1 schools</p></a><a href="/communities/palo-alto/" style="background:#1B2A4A;color:#fff;padding:40px 24px;border-radius:12px;text-decoration:none;text-align:center;"><h3 style="color:#fff;font-family:\'Playfair Display\',serif;">Palo Alto</h3><p style="color:rgba(255,255,255,0.7);font-size:14px;">Stanford, culture</p></a><a href="/communities/mountain-view/" style="background:#1B2A4A;color:#fff;padding:40px 24px;border-radius:12px;text-decoration:none;text-align:center;"><h3 style="color:#fff;font-family:\'Playfair Display\',serif;">Mountain View</h3><p style="color:rgba(255,255,255,0.7);font-size:14px;">Google HQ, downtown</p></a><a href="/communities/santa-clara/" style="background:#1B2A4A;color:#fff;padding:40px 24px;border-radius:12px;text-decoration:none;text-align:center;"><h3 style="color:#fff;font-family:\'Playfair Display\',serif;">Santa Clara</h3><p style="color:rgba(255,255,255,0.7);font-size:14px;">Great value</p></a></div></div>',
+    "placeholder_communities": '<div style="text-align:center;padding:60px 20px;max-width:900px;margin:0 auto;"><h1 style="font-family:\'Antic Didone\',serif;color:#000;text-transform:uppercase;letter-spacing:0.04em;">Explore Silicon Valley Communities</h1><p style="color:#555;margin-bottom:40px;">Discover what makes each neighborhood unique.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;margin-top:40px;"><a href="/communities/sunnyvale/" style="background:#000;color:#fff;padding:40px 24px;border-radius:12px;text-decoration:none;text-align:center;"><h3 style="color:#fff;font-family:\'Playfair Display\',serif;">Sunnyvale</h3><p style="color:rgba(255,255,255,0.7);font-size:14px;">Tech hub, top schools</p></a><a href="/communities/cupertino/" style="background:#000;color:#fff;padding:40px 24px;border-radius:12px;text-decoration:none;text-align:center;"><h3 style="color:#fff;font-family:\'Playfair Display\',serif;">Cupertino</h3><p style="color:rgba(255,255,255,0.7);font-size:14px;">Apple HQ, #1 schools</p></a><a href="/communities/palo-alto/" style="background:#000;color:#fff;padding:40px 24px;border-radius:12px;text-decoration:none;text-align:center;"><h3 style="color:#fff;font-family:\'Playfair Display\',serif;">Palo Alto</h3><p style="color:rgba(255,255,255,0.7);font-size:14px;">Stanford, culture</p></a><a href="/communities/mountain-view/" style="background:#000;color:#fff;padding:40px 24px;border-radius:12px;text-decoration:none;text-align:center;"><h3 style="color:#fff;font-family:\'Playfair Display\',serif;">Mountain View</h3><p style="color:rgba(255,255,255,0.7);font-size:14px;">Google HQ, downtown</p></a><a href="/communities/santa-clara/" style="background:#000;color:#fff;padding:40px 24px;border-radius:12px;text-decoration:none;text-align:center;"><h3 style="color:#fff;font-family:\'Playfair Display\',serif;">Santa Clara</h3><p style="color:rgba(255,255,255,0.7);font-size:14px;">Great value</p></a></div></div>',
 
-    "placeholder_listings": '<div style="text-align:center;padding:60px 20px;max-width:800px;margin:0 auto;"><h1 style="font-family:\'Playfair Display\',serif;color:#1B2A4A;">Featured Properties</h1><p style="color:#555;margin-bottom:40px;">Handpicked listings in Silicon Valley\'s most sought-after neighborhoods.</p><p style="margin-top:30px;"><a href="/contact/" style="background:#C9A84C;color:#fff;padding:16px 32px;border-radius:6px;text-decoration:none;font-weight:700;">Schedule a Showing</a></p></div>',
+    "placeholder_listings": '<div style="text-align:center;padding:60px 20px;max-width:800px;margin:0 auto;"><h1 style="font-family:\'Antic Didone\',serif;color:#000;text-transform:uppercase;letter-spacing:0.04em;">Featured Properties</h1><p style="color:#555;margin-bottom:40px;">Handpicked listings in Silicon Valley\'s most sought-after neighborhoods.</p><p style="margin-top:30px;"><a href="/contact/" style="background:#C9A84C;color:#fff;padding:16px 32px;border-radius:6px;text-decoration:none;font-weight:700;">Schedule a Showing</a></p></div>',
 
-    "placeholder_resources": '<div style="text-align:center;padding:60px 20px;max-width:800px;margin:0 auto;"><h1 style="font-family:\'Playfair Display\',serif;color:#1B2A4A;">Real Estate Resources</h1><p style="color:#555;margin-bottom:40px;">Guides and tools for Silicon Valley buyers and sellers.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;text-align:left;"><div style="background:#F5F5F5;padding:32px;border-radius:12px;"><h3 style="color:#1B2A4A;">Buyer\'s Guide</h3><p style="color:#555;font-size:14px;">Everything about buying in Silicon Valley.</p><a href="/buy/" style="color:#C9A84C;font-weight:600;">Read More &rarr;</a></div><div style="background:#F5F5F5;padding:32px;border-radius:12px;"><h3 style="color:#1B2A4A;">Seller\'s Guide</h3><p style="color:#555;font-size:14px;">Sell your home for maximum value.</p><a href="/sell/" style="color:#C9A84C;font-weight:600;">Read More &rarr;</a></div><div style="background:#F5F5F5;padding:32px;border-radius:12px;"><h3 style="color:#1B2A4A;">Communities</h3><p style="color:#555;font-size:14px;">Explore neighborhoods and schools.</p><a href="/communities/" style="color:#C9A84C;font-weight:600;">Explore &rarr;</a></div></div></div>',
+    "placeholder_resources": '<div style="text-align:center;padding:60px 20px;max-width:800px;margin:0 auto;"><h1 style="font-family:\'Antic Didone\',serif;color:#000;text-transform:uppercase;letter-spacing:0.04em;">Real Estate Resources</h1><p style="color:#555;margin-bottom:40px;">Guides and tools for Silicon Valley buyers and sellers.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;text-align:left;"><div style="background:#F5F5F5;padding:32px;border-radius:12px;"><h3 style="color:#000;">Buyer\'s Guide</h3><p style="color:#555;font-size:14px;">Everything about buying in Silicon Valley.</p><a href="/buy/" style="color:#ccb091;font-weight:600;">Read More &rarr;</a></div><div style="background:#F5F5F5;padding:32px;border-radius:12px;"><h3 style="color:#000;">Seller\'s Guide</h3><p style="color:#555;font-size:14px;">Sell your home for maximum value.</p><a href="/sell/" style="color:#ccb091;font-weight:600;">Read More &rarr;</a></div><div style="background:#F5F5F5;padding:32px;border-radius:12px;"><h3 style="color:#000;">Communities</h3><p style="color:#555;font-size:14px;">Explore neighborhoods and schools.</p><a href="/communities/" style="color:#ccb091;font-weight:600;">Explore &rarr;</a></div></div></div>',
+
+    "placeholder_transactions": '<div style="text-align:center;padding:60px 20px;max-width:800px;margin:0 auto;"><h1 style="font-family:\'Antic Didone\',serif;color:#000;text-transform:uppercase;letter-spacing:0.04em;">Past Transactions</h1><p style="color:#555;margin-bottom:40px;">Dedicated to delivering results for Silicon Valley families. 5-star Zillow reviews.</p><p style="margin-top:30px;"><a href="/contact/" style="background:#000;color:#fff;padding:16px 40px;text-decoration:none;font-weight:500;text-transform:uppercase;letter-spacing:0.12em;font-size:12px;">Contact Jing</a></p></div>',
 
     "placeholder_contact": "%%CF7_CONTACT%%",  # Replaced after CF7 forms created
 
-    "ty_valuation": '<div style="text-align:center;padding:60px 20px;max-width:600px;margin:0 auto;"><div style="width:64px;height:64px;background:#2D8B4E;border-radius:50%;color:#fff;font-size:32px;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;">&#10003;</div><h2 style="color:#1B2A4A;">Your Valuation Request Has Been Received!</h2><p style="color:#555;line-height:1.7;">Jing will personally review your property and send you a detailed home valuation within 24 hours.</p><p style="margin-top:24px;"><a href="/communities/" style="color:#C9A84C;font-weight:600;">Explore Communities</a> &middot; <a href="/sell/" style="color:#C9A84C;font-weight:600;">Selling Process</a></p></div>',
+    "ty_valuation": '<div style="text-align:center;padding:60px 20px;max-width:600px;margin:0 auto;"><div style="width:64px;height:64px;background:#2D8B4E;border-radius:50%;color:#fff;font-size:32px;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;">&#10003;</div><h2 style="color:#000;">Your Valuation Request Has Been Received!</h2><p style="color:#555;line-height:1.7;">Jing will personally review your property and send you a detailed home valuation within 24 hours.</p><p style="margin-top:24px;"><a href="/communities/" style="color:#ccb091;font-weight:600;">Explore Communities</a> &middot; <a href="/sell/" style="color:#ccb091;font-weight:600;">Selling Process</a></p></div>',
 
-    "ty_consultation": '<div style="text-align:center;padding:60px 20px;max-width:600px;margin:0 auto;"><div style="width:64px;height:64px;background:#2D8B4E;border-radius:50%;color:#fff;font-size:32px;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;">&#10003;</div><h2 style="color:#1B2A4A;">Your Consultation Is Requested!</h2><p style="color:#555;line-height:1.7;">Jing will confirm your time shortly.</p><p style="margin-top:24px;"><a href="/buy/" style="color:#C9A84C;font-weight:600;">Buyer Services</a> &middot; <a href="/communities/" style="color:#C9A84C;font-weight:600;">Communities</a></p></div>',
+    "ty_consultation": '<div style="text-align:center;padding:60px 20px;max-width:600px;margin:0 auto;"><div style="width:64px;height:64px;background:#2D8B4E;border-radius:50%;color:#fff;font-size:32px;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;">&#10003;</div><h2 style="color:#000;">Your Consultation Is Requested!</h2><p style="color:#555;line-height:1.7;">Jing will confirm your time shortly.</p><p style="margin-top:24px;"><a href="/buy/" style="color:#ccb091;font-weight:600;">Buyer Services</a> &middot; <a href="/communities/" style="color:#ccb091;font-weight:600;">Communities</a></p></div>',
 
-    "ty_contact": '<div style="text-align:center;padding:60px 20px;max-width:600px;margin:0 auto;"><div style="width:64px;height:64px;background:#2D8B4E;border-radius:50%;color:#fff;font-size:32px;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;">&#10003;</div><h2 style="color:#1B2A4A;">Thanks for Reaching Out!</h2><p style="color:#555;line-height:1.7;">Jing will get back to you within 24 hours.</p><p style="margin-top:24px;"><a href="/listings/" style="color:#C9A84C;font-weight:600;">Browse Listings</a> &middot; <a href="/resources/" style="color:#C9A84C;font-weight:600;">Resources</a></p></div>',
+    "ty_contact": '<div style="text-align:center;padding:60px 20px;max-width:600px;margin:0 auto;"><div style="width:64px;height:64px;background:#2D8B4E;border-radius:50%;color:#fff;font-size:32px;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;">&#10003;</div><h2 style="color:#000;">Thanks for Reaching Out!</h2><p style="color:#555;line-height:1.7;">Jing will get back to you within 24 hours.</p><p style="margin-top:24px;"><a href="/listings/" style="color:#ccb091;font-weight:600;">Browse Listings</a> &middot; <a href="/resources/" style="color:#ccb091;font-weight:600;">Resources</a></p></div>',
 }
 
 SEO_DATA = {
     "": ("Jing Chen, Realtor — Silicon Valley Real Estate Expert", "Data-driven Silicon Valley realtor helping families buy and sell homes in Sunnyvale, Cupertino, Palo Alto, Mountain View, and Santa Clara."),
-    "about": ("About Jing Chen — Your Trusted Silicon Valley Real Estate Partner", "Meet Jing Chen: 10+ years of Silicon Valley real estate expertise, 150+ families served, bilingual in English and Mandarin."),
+    "about": ("About Jing Chen — Your Trusted Silicon Valley Real Estate Partner", "Meet Jing Chen: Silicon Valley real estate expertise, 5-star Zillow reviews, bilingual in English and Mandarin."),
     "buy": ("Buy a Home in Silicon Valley — Jing Chen, Realtor", "Expert buyer representation in Silicon Valley. Data-driven home search, competitive offer strategy, and personal guidance."),
     "sell": ("Sell Your Silicon Valley Home for Maximum Value — Jing Chen", "Strategic pricing, professional marketing, expert negotiation. Get a free home valuation today."),
     "home-valuation": ("Free Home Valuation — What's Your Silicon Valley Home Worth?", "Get a complimentary, expert-prepared home valuation for your Silicon Valley property."),
@@ -368,11 +372,12 @@ SEO_DATA = {
     "mountain-view": ("Mountain View Homes for Sale — Jing Chen, Realtor", "Find Mountain View homes for sale. Home to Google, vibrant downtown, excellent living."),
     "santa-clara": ("Santa Clara Homes for Sale — Jing Chen, Realtor", "Explore Santa Clara homes for sale. Affordable entry point, great schools, tech employers."),
     "listings": ("Featured Silicon Valley Listings — Jing Chen, Realtor", "Browse featured homes for sale in Sunnyvale, Cupertino, Palo Alto, Mountain View, and Santa Clara."),
-    "success-stories": ("Client Success Stories & Reviews — Jing Chen, Realtor", "Read what Silicon Valley families say about working with Jing Chen. 5.0-star Google rating."),
+    "success-stories": ("Client Success Stories & Reviews — Jing Chen, Realtor", "Read what Silicon Valley families say about working with Jing Chen. 5-star Zillow reviews."),
     "contact": ("Contact Jing Chen — Silicon Valley Real Estate Consultation", "Schedule a free consultation. Bilingual service in English and Mandarin."),
     "communities": ("Silicon Valley Communities — Jing Chen, Realtor", "Explore Sunnyvale, Cupertino, Palo Alto, Mountain View, and Santa Clara neighborhoods."),
     "resources": ("Silicon Valley Real Estate Resources — Jing Chen", "Market reports, buyer and seller guides, and neighborhood insights."),
-    "home-search": ("Search Silicon Valley Homes for Sale — Jing Chen", "Browse homes for sale across Silicon Valley's top neighborhoods."),
+    "home-search": ("Search Silicon Valley Homes for Sale — Jing Chen", "Search homes for sale across Silicon Valley. Filter by city, price, beds, and more."),
+    "past-transactions": ("Past Transactions & Track Record — Jing Chen, Realtor", "View Jing Chen's past transactions in Silicon Valley. 5-star Zillow reviews."),
 }
 
 def create_pages():
@@ -564,19 +569,19 @@ def update_contact_page(page_ids, cf7_forms):
 
     content = f"""
 <div style="max-width:900px;margin:0 auto;padding:40px 20px;">
-<h1 style="font-family:'Playfair Display',serif;color:#1B2A4A;text-align:center;">Let's Talk About Your Goals</h1>
+<h1 style="font-family:'Playfair Display',serif;color:#000;text-align:center;">Let's Talk About Your Goals</h1>
 <p style="text-align:center;color:#555;margin-bottom:48px;">Whether you're buying, selling, or just exploring — I'd love to hear from you.</p>
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;">
 <div>
-<h3 style="color:#1B2A4A;">Send a Message</h3>
+<h3 style="color:#000;">Send a Message</h3>
 [contact-form-7 id="{cf_id}" title="Contact Form"]
 </div>
 <div>
-<h3 style="color:#1B2A4A;">Schedule a Consultation</h3>
+<h3 style="color:#000;">Schedule a Consultation</h3>
 [contact-form-7 id="{cs_id}" title="Schedule Consultation"]
 <hr style="margin:32px 0;">
-<h3 style="color:#1B2A4A;">Contact Directly</h3>
+<h3 style="color:#000;">Contact Directly</h3>
 <p><strong>Phone:</strong> <a href="tel:+14081234567">(408) XXX-XXXX</a></p>
 <p><strong>Email:</strong> <a href="mailto:jing@homesbyjingchen.com">jing@homesbyjingchen.com</a></p>
 <p><strong>Languages:</strong> English, 中文 (Mandarin)</p>
@@ -627,8 +632,12 @@ def create_menu(page_ids):
 
     # Sub-items
     sub_items = {
-        "Buy": [("Home Search", "/buy/home-search/")],
+        "Buy": [("Home Search", "/home-search/")],
         "Sell": [("Home Valuation", "/sell/home-valuation/")],
+        "Listings": [
+            ("Home Search", "/home-search/"),
+            ("Past Transactions", "/past-transactions/"),
+        ],
         "Communities": [
             ("Sunnyvale", "/communities/sunnyvale/"),
             ("Cupertino", "/communities/cupertino/"),

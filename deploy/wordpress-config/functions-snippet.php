@@ -13,7 +13,7 @@ add_action('wp_enqueue_scripts', 'jc_enqueue_fonts');
 function jc_enqueue_fonts() {
     wp_enqueue_style(
         'jc-google-fonts',
-        'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap',
+        'https://fonts.googleapis.com/css2?family=Antic+Didone&family=Poppins:wght@300;400;500;600;700&display=swap',
         array(),
         null
     );
@@ -105,12 +105,7 @@ function jc_schema_markup() {
             {"@type": "City", "name": "Mountain View"},
             {"@type": "City", "name": "Santa Clara"}
         ],
-        "knowsLanguage": ["en", "zh"],
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5.0",
-            "reviewCount": "50"
-        }
+        "knowsLanguage": ["en", "zh"]
     }
     </script>
     <?php
@@ -130,51 +125,53 @@ function jc_cf7_styles() {
     .wpcf7 textarea,
     .wpcf7 select {
         width: 100%;
-        padding: 14px 16px;
-        font-family: 'Inter', sans-serif;
-        font-size: 16px;
-        border: 1.5px solid #DDD;
-        border-radius: 6px;
-        transition: border-color 0.3s, box-shadow 0.3s;
+        padding: 16px 20px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        border: 1px solid #ddd;
+        border-radius: 0;
+        transition: border-color 0.3s;
         box-sizing: border-box;
     }
     .wpcf7 input:focus,
     .wpcf7 textarea:focus,
     .wpcf7 select:focus {
-        border-color: #C9A84C;
-        box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15);
+        border-color: #ccb091;
         outline: none;
     }
     .wpcf7 label {
-        font-family: 'Inter', sans-serif;
-        font-size: 14px;
-        font-weight: 600;
-        color: #1B2A4A;
+        font-family: 'Poppins', sans-serif;
+        font-size: 11px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #000;
         display: block;
-        margin-bottom: 6px;
+        margin-bottom: 8px;
     }
     .wpcf7 input[type="submit"] {
-        background: #C9A84C;
+        background: #000;
         color: #fff;
-        font-family: 'Inter', sans-serif;
-        font-size: 16px;
-        font-weight: 700;
-        padding: 16px 32px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        font-weight: 500;
+        padding: 16px 40px;
         border: none;
-        border-radius: 6px;
+        border-radius: 0;
         cursor: pointer;
         transition: background 0.3s;
-        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
     }
     .wpcf7 input[type="submit"]:hover {
-        background: #B8973E;
+        background: #ccb091;
     }
     .wpcf7-response-output {
-        border-radius: 6px !important;
-        font-family: 'Inter', sans-serif !important;
+        border-radius: 0 !important;
+        font-family: 'Poppins', sans-serif !important;
     }
     .wpcf7 p {
-        margin-bottom: 16px;
+        margin-bottom: 20px;
     }
     </style>
     <?php
