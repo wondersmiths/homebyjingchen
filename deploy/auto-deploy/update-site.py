@@ -107,6 +107,9 @@ a.jc-city p{color:rgba(255,255,255,.7);font-size:14px;margin:0}
 .jc-assoc{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;padding:8px 0}
 .jc-assoc span{color:#999;font-size:13px}
 .ast-primary-header-bar,.ast-main-header-bar-alignment,.site-header,.ast-header-break-point .main-header-bar{background:#1B2A4A!important}
+header .custom-logo-link img,.site-logo-img img,.astra-logo-svg{max-width:280px!important;width:280px!important}
+@media(max-width:921px){header .custom-logo-link img,.site-logo-img img,.astra-logo-svg{max-width:220px!important;width:220px!important}}
+@media(max-width:544px){header .custom-logo-link img,.site-logo-img img,.astra-logo-svg{max-width:180px!important;width:180px!important}}
 .ast-builder-menu .menu-item>a,.ast-header-break-point .ast-button,.main-header-menu .menu-item>a{color:#fff!important}
 .ast-builder-menu .menu-item:hover>a{color:#C9A84C!important}
 .ast-header-button-1 .ast-custom-button{background:#C9A84C!important;color:#fff!important}
